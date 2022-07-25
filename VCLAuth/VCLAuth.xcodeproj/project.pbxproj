@@ -1,0 +1,627 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		2858D6F12856376100CD6F60 /* VCLAuthAggregate */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2858D6F22856376100CD6F60 /* Build configuration list for PBXAggregateTarget "VCLAuthAggregate" */;
+			buildPhases = (
+				2858D6F52856377200CD6F60 /* Run Script to Build XCFramework */,
+			);
+			dependencies = (
+			);
+			name = VCLAuthAggregate;
+			productName = VCLAuthAggregate;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		2858D6B92856330E00CD6F60 /* VCLAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2858D6AE2856330D00CD6F60 /* VCLAuth.framework */; };
+		2858D6BE2856330E00CD6F60 /* VCLAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858D6BD2856330E00CD6F60 /* VCLAuthTests.swift */; };
+		2858D6BF2856330E00CD6F60 /* VCLAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 2858D6B12856330D00CD6F60 /* VCLAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2858D6E62856338A00CD6F60 /* VCLAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858D6D62856338A00CD6F60 /* VCLAuth.swift */; };
+		2858D6E72856338A00CD6F60 /* VclAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858D6D72856338A00CD6F60 /* VclAuthProvider.swift */; };
+		2858D6E82856338A00CD6F60 /* VCLResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858D6D92856338A00CD6F60 /* VCLResult.swift */; };
+		2858D6E92856338A00CD6F60 /* VCLAuthConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858D6DA2856338A00CD6F60 /* VCLAuthConfig.swift */; };
+		2858D6EA2856338A00CD6F60 /* VCLAuthImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858D6DC2856338A00CD6F60 /* VCLAuthImpl.swift */; };
+		2858D6EB2856338A00CD6F60 /* VCLLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858D6DE2856338A00CD6F60 /* VCLLog.swift */; };
+		2858D6EC2856338A00CD6F60 /* GlobalConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858D6DF2856338A00CD6F60 /* GlobalConfig.swift */; };
+		2858D6ED2856338A00CD6F60 /* ExecutorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858D6E22856338A00CD6F60 /* ExecutorImpl.swift */; };
+		2858D6EE2856338A00CD6F60 /* Executor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2858D6E52856338A00CD6F60 /* Executor.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2858D6BA2856330E00CD6F60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2858D6A52856330D00CD6F60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2858D6AD2856330D00CD6F60;
+			remoteInfo = VCLAuth;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2858D6AE2856330D00CD6F60 /* VCLAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VCLAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2858D6B12856330D00CD6F60 /* VCLAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VCLAuth.h; sourceTree = "<group>"; };
+		2858D6B82856330E00CD6F60 /* VCLAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VCLAuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2858D6BD2856330E00CD6F60 /* VCLAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCLAuthTests.swift; sourceTree = "<group>"; };
+		2858D6D62856338A00CD6F60 /* VCLAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCLAuth.swift; sourceTree = "<group>"; };
+		2858D6D72856338A00CD6F60 /* VclAuthProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VclAuthProvider.swift; sourceTree = "<group>"; };
+		2858D6D92856338A00CD6F60 /* VCLResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCLResult.swift; sourceTree = "<group>"; };
+		2858D6DA2856338A00CD6F60 /* VCLAuthConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCLAuthConfig.swift; sourceTree = "<group>"; };
+		2858D6DC2856338A00CD6F60 /* VCLAuthImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCLAuthImpl.swift; sourceTree = "<group>"; };
+		2858D6DE2856338A00CD6F60 /* VCLLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCLLog.swift; sourceTree = "<group>"; };
+		2858D6DF2856338A00CD6F60 /* GlobalConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConfig.swift; sourceTree = "<group>"; };
+		2858D6E22856338A00CD6F60 /* ExecutorImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecutorImpl.swift; sourceTree = "<group>"; };
+		2858D6E52856338A00CD6F60 /* Executor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Executor.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2858D6AB2856330D00CD6F60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2858D6B52856330E00CD6F60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2858D6B92856330E00CD6F60 /* VCLAuth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2858D6A42856330D00CD6F60 = {
+			isa = PBXGroup;
+			children = (
+				2858D6B02856330D00CD6F60 /* VCLAuth */,
+				2858D6BC2856330E00CD6F60 /* VCLAuthTests */,
+				2858D6AF2856330D00CD6F60 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2858D6AF2856330D00CD6F60 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2858D6AE2856330D00CD6F60 /* VCLAuth.framework */,
+				2858D6B82856330E00CD6F60 /* VCLAuthTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2858D6B02856330D00CD6F60 /* VCLAuth */ = {
+			isa = PBXGroup;
+			children = (
+				2858D6D52856338A00CD6F60 /* api */,
+				2858D6DB2856338A00CD6F60 /* impl */,
+				2858D6B12856330D00CD6F60 /* VCLAuth.h */,
+			);
+			path = VCLAuth;
+			sourceTree = "<group>";
+		};
+		2858D6BC2856330E00CD6F60 /* VCLAuthTests */ = {
+			isa = PBXGroup;
+			children = (
+				2858D6BD2856330E00CD6F60 /* VCLAuthTests.swift */,
+			);
+			path = VCLAuthTests;
+			sourceTree = "<group>";
+		};
+		2858D6D52856338A00CD6F60 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				2858D6D62856338A00CD6F60 /* VCLAuth.swift */,
+				2858D6D72856338A00CD6F60 /* VclAuthProvider.swift */,
+				2858D6D82856338A00CD6F60 /* entities */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		2858D6D82856338A00CD6F60 /* entities */ = {
+			isa = PBXGroup;
+			children = (
+				2858D6D92856338A00CD6F60 /* VCLResult.swift */,
+				2858D6DA2856338A00CD6F60 /* VCLAuthConfig.swift */,
+			);
+			path = entities;
+			sourceTree = "<group>";
+		};
+		2858D6DB2856338A00CD6F60 /* impl */ = {
+			isa = PBXGroup;
+			children = (
+				2858D6E02856338A00CD6F60 /* data */,
+				2858D6E32856338A00CD6F60 /* domain */,
+				2858D6DF2856338A00CD6F60 /* GlobalConfig.swift */,
+				2858D6DD2856338A00CD6F60 /* utils */,
+				2858D6DC2856338A00CD6F60 /* VCLAuthImpl.swift */,
+			);
+			path = impl;
+			sourceTree = "<group>";
+		};
+		2858D6DD2856338A00CD6F60 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				2858D6DE2856338A00CD6F60 /* VCLLog.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		2858D6E02856338A00CD6F60 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				2858D6E12856338A00CD6F60 /* executors */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		2858D6E12856338A00CD6F60 /* executors */ = {
+			isa = PBXGroup;
+			children = (
+				2858D6E22856338A00CD6F60 /* ExecutorImpl.swift */,
+			);
+			path = executors;
+			sourceTree = "<group>";
+		};
+		2858D6E32856338A00CD6F60 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				2858D6E42856338A00CD6F60 /* executors */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		2858D6E42856338A00CD6F60 /* executors */ = {
+			isa = PBXGroup;
+			children = (
+				2858D6E52856338A00CD6F60 /* Executor.swift */,
+			);
+			path = executors;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2858D6A92856330D00CD6F60 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2858D6BF2856330E00CD6F60 /* VCLAuth.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2858D6AD2856330D00CD6F60 /* VCLAuth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2858D6C22856330E00CD6F60 /* Build configuration list for PBXNativeTarget "VCLAuth" */;
+			buildPhases = (
+				2858D6A92856330D00CD6F60 /* Headers */,
+				2858D6AA2856330D00CD6F60 /* Sources */,
+				2858D6AB2856330D00CD6F60 /* Frameworks */,
+				2858D6AC2856330D00CD6F60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VCLAuth;
+			productName = VCLAuth;
+			productReference = 2858D6AE2856330D00CD6F60 /* VCLAuth.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2858D6B72856330E00CD6F60 /* VCLAuthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2858D6C52856330E00CD6F60 /* Build configuration list for PBXNativeTarget "VCLAuthTests" */;
+			buildPhases = (
+				2858D6B42856330E00CD6F60 /* Sources */,
+				2858D6B52856330E00CD6F60 /* Frameworks */,
+				2858D6B62856330E00CD6F60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2858D6BB2856330E00CD6F60 /* PBXTargetDependency */,
+			);
+			name = VCLAuthTests;
+			productName = VCLAuthTests;
+			productReference = 2858D6B82856330E00CD6F60 /* VCLAuthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2858D6A52856330D00CD6F60 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					2858D6AD2856330D00CD6F60 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					2858D6B72856330E00CD6F60 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					2858D6F12856376100CD6F60 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+				};
+			};
+			buildConfigurationList = 2858D6A82856330D00CD6F60 /* Build configuration list for PBXProject "VCLAuth" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2858D6A42856330D00CD6F60;
+			productRefGroup = 2858D6AF2856330D00CD6F60 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2858D6AD2856330D00CD6F60 /* VCLAuth */,
+				2858D6B72856330E00CD6F60 /* VCLAuthTests */,
+				2858D6F12856376100CD6F60 /* VCLAuthAggregate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2858D6AC2856330D00CD6F60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2858D6B62856330E00CD6F60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2858D6F52856377200CD6F60 /* Run Script to Build XCFramework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script to Build XCFramework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/${PROJECT_DIR}/scripts/build_xcframework.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2858D6AA2856330D00CD6F60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2858D6EB2856338A00CD6F60 /* VCLLog.swift in Sources */,
+				2858D6EE2856338A00CD6F60 /* Executor.swift in Sources */,
+				2858D6E92856338A00CD6F60 /* VCLAuthConfig.swift in Sources */,
+				2858D6EA2856338A00CD6F60 /* VCLAuthImpl.swift in Sources */,
+				2858D6EC2856338A00CD6F60 /* GlobalConfig.swift in Sources */,
+				2858D6E72856338A00CD6F60 /* VclAuthProvider.swift in Sources */,
+				2858D6E62856338A00CD6F60 /* VCLAuth.swift in Sources */,
+				2858D6ED2856338A00CD6F60 /* ExecutorImpl.swift in Sources */,
+				2858D6E82856338A00CD6F60 /* VCLResult.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2858D6B42856330E00CD6F60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2858D6BE2856330E00CD6F60 /* VCLAuthTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2858D6BB2856330E00CD6F60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2858D6AD2856330D00CD6F60 /* VCLAuth */;
+			targetProxy = 2858D6BA2856330E00CD6F60 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2858D6C02856330E00CD6F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2858D6C12856330E00CD6F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		2858D6C32856330E00CD6F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7DDDGP43MJ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.velocitycareerlabs.vclauth.VCLAuth;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		2858D6C42856330E00CD6F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7DDDGP43MJ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.velocitycareerlabs.vclauth.VCLAuth;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		2858D6C62856330E00CD6F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7DDDGP43MJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.velocitycareerlabs.vclauth.VCLAuthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2858D6C72856330E00CD6F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7DDDGP43MJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.velocitycareerlabs.vclauth.VCLAuthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2858D6F32856376100CD6F60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7DDDGP43MJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2858D6F42856376100CD6F60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7DDDGP43MJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2858D6A82856330D00CD6F60 /* Build configuration list for PBXProject "VCLAuth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2858D6C02856330E00CD6F60 /* Debug */,
+				2858D6C12856330E00CD6F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2858D6C22856330E00CD6F60 /* Build configuration list for PBXNativeTarget "VCLAuth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2858D6C32856330E00CD6F60 /* Debug */,
+				2858D6C42856330E00CD6F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2858D6C52856330E00CD6F60 /* Build configuration list for PBXNativeTarget "VCLAuthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2858D6C62856330E00CD6F60 /* Debug */,
+				2858D6C72856330E00CD6F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2858D6F22856376100CD6F60 /* Build configuration list for PBXAggregateTarget "VCLAuthAggregate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2858D6F32856376100CD6F60 /* Debug */,
+				2858D6F42856376100CD6F60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2858D6A52856330D00CD6F60 /* Project object */;
+}
