@@ -17,12 +17,15 @@ public protocol VCLAuth {
         errorHandler: @escaping (VCLError) -> Void
     )
     
-    ///Displays a authentication identification dialog with provided configurations
+    ///Displays an authentication identification dialog with provided configurations
     func authenticate(
         authConfig: VCLAuthConfig,
         successHandler: @escaping (Bool) -> Void,
         errorHandler: @escaping (VCLError) -> Void
     )
+    
+    ///Cancels an authentication identification dialog
+    func cancelAuthentication()
 
     /// Navigates to device's security settings screen for authentication setup
     func openSecuritySettings(
