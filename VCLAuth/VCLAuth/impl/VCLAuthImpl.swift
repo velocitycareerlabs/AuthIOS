@@ -4,8 +4,8 @@
 //
 //  Created by Michael Avoyan on 22/05/2022.
 //
-// Copyright 2022 Velocity Career Labs inc.
-// SPDX-License-Identifier: Apache-2.0
+//  Copyright 2022 Velocity Career Labs inc.
+//  SPDX-License-Identifier: Apache-2.0
 
 import UIKit
 import LocalAuthentication
@@ -25,56 +25,55 @@ class VCLAuthImpl: VCLAuth {
         errorHandler: @escaping (VCLError) -> Void
     ) {
         self.executor.runOnMainThread { [weak self] in
-            do {
-                var error: NSError?
-                try successHandler(self?.localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) == true)
-            } catch let error {
-                errorHandler(VCLError(error: error))
-            }
+            var error: NSError?
+            successHandler(
+                self?.localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) == true
+            )
         }
     }
     
     func authenticate(
         authConfig: VCLAuthConfig,
         successHandler: @escaping (Bool) -> Void,
-        errorHandler: @escaping (VCLError) -> Void) {
-            
-            self.executor.runOnMainThread { [weak self] in
-                do {
-                    try self?.localAuthenticationContext.evaluatePolicy(
-                        .deviceOwnerAuthentication,
-    //                    .deviceOwnerAuthenticationWithBiometrics,
-                        localizedReason: authConfig.title
-                    ) { success, error in
-                        
-                        if success {
-                            successHandler(true)
-                        } else {
-                            if let error = error {
-                                errorHandler(VCLError(error: error))
-                            } else {
-                                successHandler(false)
-                            }
-                        }
+        errorHandler: @escaping (VCLError) -> Void
+    ) {
+        self.executor.runOnMainThread { [weak self] in
+            self?.localAuthenticationContext.evaluatePolicy(
+                .deviceOwnerAuthentication,
+                // .deviceOwnerAuthenticationWithBiometrics,
+                localizedReason: authConfig.title
+            ) { success, error in
+                if success {
+                    successHandler(true)
+                } else {
+                    if let error = error {
+                        errorHandler(VCLError(error: error))
+                    } else {
+                        successHandler(false)
                     }
-                } catch let error {
-                    errorHandler(VCLError(error: error))
                 }
             }
         }
+    }
+    
+    func cancelAuthentication() {
+        self.executor.runOnMainThread { [weak self] in
+            self?.localAuthenticationContext.invalidate()
+        }
+    }
     
     func openSecuritySettings(
         successHandler: @escaping (Bool) -> Void,
-        errorHandler: @escaping (VCLError) -> Void) {
-            
-            self.executor.runOnMainThread {
-                if let url = URL.init(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    successHandler(true)
-                }
-                else {
-                    errorHandler(VCLError(description: "Failed to oppen settings"))
-                }
+        errorHandler: @escaping (VCLError) -> Void
+    ) {
+        self.executor.runOnMainThread {
+            if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                successHandler(true)
+            }
+            else {
+                errorHandler(VCLError(description: "Failed to oppen settings"))
             }
         }
+    }
 }
