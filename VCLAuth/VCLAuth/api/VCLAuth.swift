@@ -25,11 +25,14 @@ public protocol VCLAuth {
     )
     
     ///Cancels an authentication identification dialog
-    func cancelAuthentication()
+    func cancelAuthentication(
+        successHandler: @escaping () -> Void,
+        errorHandler: @escaping (VCLError) -> Void
+    )
 
     /// Navigates to device's security settings screen for authentication setup
     func openSecuritySettings(
-        successHandler: @escaping (Bool) -> Void,
+        successHandler: @escaping () -> Void,
         errorHandler: @escaping (VCLError) -> Void
     )
 }

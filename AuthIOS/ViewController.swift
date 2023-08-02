@@ -55,8 +55,8 @@ class ViewController: UIViewController {
     
     @objc private func openSecuritySettings() {
         vclAuth.openSecuritySettings (
-            successHandler: { isOpen in
-                NSLog("VCL Security settings open: \(isOpen)")
+            successHandler: {
+                NSLog("VCL Security settings opened")
             },
             errorHandler: { error in
                 NSLog("VCL Security settings open error: \(error)")

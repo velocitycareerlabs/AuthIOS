@@ -26,9 +26,12 @@ class VCLAuthImpl: VCLAuth {
     ) {
         self.executor.runOnMainThread { [weak self] in
             var error: NSError?
-            successHandler(
-                self?.localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) == true
-            )
+            let isAvailable = self?.localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error)
+            if let err = error {
+                errorHandler(VCLError(error: err))
+            } else {
+                successHandler(isAvailable == true)
+            }
         }
     }
     
@@ -56,20 +59,28 @@ class VCLAuthImpl: VCLAuth {
         }
     }
     
-    func cancelAuthentication() {
+    func cancelAuthentication(
+        successHandler: @escaping () -> Void,
+        errorHandler: @escaping (VCLError) -> Void
+    ) {
         self.executor.runOnMainThread { [weak self] in
-            self?.localAuthenticationContext.invalidate()
+            do {
+                try self?.localAuthenticationContext.invalidate()
+                successHandler()
+            } catch {
+                errorHandler(VCLError(error: error))
+            }
         }
     }
     
     func openSecuritySettings(
-        successHandler: @escaping (Bool) -> Void,
+        successHandler: @escaping () -> Void,
         errorHandler: @escaping (VCLError) -> Void
     ) {
         self.executor.runOnMainThread {
             if let url = URL.init(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                successHandler(true)
+                successHandler()
             }
             else {
                 errorHandler(VCLError(description: "Failed to oppen settings"))
