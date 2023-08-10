@@ -4,8 +4,8 @@
 //
 //  Created by Michael Avoyan on 12/06/2022.
 //
-// Copyright 2022 Velocity Career Labs inc.
-// SPDX-License-Identifier: Apache-2.0
+//  Copyright 2022 Velocity Career Labs inc.
+//  SPDX-License-Identifier: Apache-2.0
 
 import UIKit
 import VCLAuth
@@ -55,8 +55,8 @@ class ViewController: UIViewController {
     
     @objc private func openSecuritySettings() {
         vclAuth.openSecuritySettings (
-            successHandler: {
-                NSLog("VCL Security settings opened")
+            successHandler: { isOpen in
+                NSLog("VCL Security settings is open: \(isOpen)")
             },
             errorHandler: { error in
                 NSLog("VCL Security settings open error: \(error)")

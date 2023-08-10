@@ -25,12 +25,11 @@ class VCLAuthImpl: VCLAuth {
         errorHandler: @escaping (VCLError) -> Void
     ) {
         self.executor.runOnMainThread { [weak self] in
-            var error: NSError?
-            let isAvailable = self?.localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error)
-            if let err = error {
-                errorHandler(VCLError(error: err))
-            } else {
-                successHandler(isAvailable == true)
+            do {
+                var error: NSError?
+                try successHandler(self?.localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) == true)
+            } catch let error {
+                errorHandler(VCLError(error: error))
             }
         }
     }
@@ -38,53 +37,44 @@ class VCLAuthImpl: VCLAuth {
     func authenticate(
         authConfig: VCLAuthConfig,
         successHandler: @escaping (Bool) -> Void,
-        errorHandler: @escaping (VCLError) -> Void
-    ) {
-        self.executor.runOnMainThread { [weak self] in
-            self?.localAuthenticationContext.evaluatePolicy(
-                .deviceOwnerAuthentication,
-                // .deviceOwnerAuthenticationWithBiometrics,
-                localizedReason: authConfig.title
-            ) { success, error in
-                if success {
-                    successHandler(true)
-                } else {
-                    if let error = error {
-                        errorHandler(VCLError(error: error))
-                    } else {
-                        successHandler(false)
+        errorHandler: @escaping (VCLError) -> Void) {
+            
+            self.executor.runOnMainThread { [weak self] in
+                do {
+                    try self?.localAuthenticationContext.evaluatePolicy(
+                        .deviceOwnerAuthentication,
+    //                    .deviceOwnerAuthenticationWithBiometrics,
+                        localizedReason: authConfig.title
+                    ) { success, error in
+                        
+                        if success {
+                            successHandler(true)
+                        } else {
+                            if let error = error {
+                                errorHandler(VCLError(error: error))
+                            } else {
+                                successHandler(false)
+                            }
+                        }
                     }
+                } catch let error {
+                    errorHandler(VCLError(error: error))
                 }
             }
         }
-    }
-    
-    func cancelAuthentication(
-        successHandler: @escaping () -> Void,
-        errorHandler: @escaping (VCLError) -> Void
-    ) {
-        self.executor.runOnMainThread { [weak self] in
-            do {
-                try self?.localAuthenticationContext.invalidate()
-                successHandler()
-            } catch {
-                errorHandler(VCLError(error: error))
-            }
-        }
-    }
     
     func openSecuritySettings(
-        successHandler: @escaping () -> Void,
-        errorHandler: @escaping (VCLError) -> Void
-    ) {
-        self.executor.runOnMainThread {
-            if let url = URL.init(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                successHandler()
-            }
-            else {
-                errorHandler(VCLError(description: "Failed to oppen settings"))
+        successHandler: @escaping (Bool) -> Void,
+        errorHandler: @escaping (VCLError) -> Void) {
+            
+            self.executor.runOnMainThread {
+                if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    successHandler(true)
+                }
+                else {
+                    errorHandler(VCLError(description: "Failed to oppen settings"))
+                }
             }
         }
-    }
 }
