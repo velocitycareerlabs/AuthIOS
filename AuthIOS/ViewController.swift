@@ -29,18 +29,18 @@ class ViewController: UIViewController {
     @objc private func authenticate() {
         vclAuth.isAuthenticationAvailable(
             successHandler: { [weak self] isAuthenticationAvailable in
-                NSLog("VCL isAuthenticationAvailable: \(isAuthenticationAvailable)")
+                NSLog("VCLAuth isAuthenticationAvailable: \(isAuthenticationAvailable)")
                 if isAuthenticationAvailable {
                     self?.vclAuth.authenticate(
                         authConfig: VCLAuthConfig(
                             title: "The passcode you use to unlock this Phone, can also be used to access your Velocity account."
                         ),
                         successHandler: { isRecognized in
-                            NSLog("VCL User recognized: \(isRecognized)")
+                            NSLog("VCLAuth User recognized: \(isRecognized)")
                             
                         },
                         errorHandler: { [weak self] error in
-                            NSLog("VCL Auth error: \(error)")
+                            NSLog("VCLAuth error: \(error)")
                             self?.showAlert(title: "Auth error", message: error.description)
                         })
                 } else {
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
                 }
             },
             errorHandler: { [weak self] error in
-                NSLog("VCL isAuthenticationAvailable error: \(error)")
+                NSLog("VCLAuth isAuthenticationAvailable error: \(error)")
                 self?.showAlert(title: "isAuthenticationAvailable error", message: error.description)
             })
     }
@@ -56,10 +56,10 @@ class ViewController: UIViewController {
     @objc private func openSecuritySettings() {
         vclAuth.openSecuritySettings (
             successHandler: { isOpen in
-                NSLog("VCL Security settings is open: \(isOpen)")
+                NSLog("VCLAuth Security settings is open: \(isOpen)")
             },
             errorHandler: { error in
-                NSLog("VCL Security settings open error: \(error)")
+                NSLog("VCLAuth Security settings open error: \(error)")
             })
     }
     
