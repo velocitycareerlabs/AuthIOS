@@ -1,4 +1,4 @@
-name: WalletIOS-SDK-Tests
+name: AuthIOS-SDK-Tests
 
 on:
   pull_request:

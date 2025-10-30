@@ -1,4 +1,4 @@
-name: WalletIOS-SDK-Publish
+name: AuthIOS-SDK-Publish
 
 on:
   push:
