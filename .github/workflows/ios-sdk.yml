@@ -122,7 +122,7 @@ jobs:
       - name: Publish to Specs
         run: |
           cp -r VCLAuth/0.1.0 VCLAuth/${{ env.FRAMEWORK_VERSION }}
-          sed -i '' 's/0\.6\.0/${{ env.FRAMEWORK_VERSION }}/g' VCLAuth/${{ env.FRAMEWORK_VERSION }}/VCLAuth.podspec
+          sed -i '' 's/0\.1\.0/${{ env.FRAMEWORK_VERSION }}/g' VCLAuth/${{ env.FRAMEWORK_VERSION }}/VCLAuth.podspec
           git add VCLAuth/${{ env.FRAMEWORK_VERSION }} && git commit -am "sdk ${{ env.FRAMEWORK_VERSION }}" && git push
         env:
           GITHUB_TOKEN: ${{ env.PAT_TOKEN }}
