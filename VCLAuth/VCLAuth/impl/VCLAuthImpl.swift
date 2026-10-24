@@ -51,14 +51,17 @@ class VCLAuthImpl: VCLAuth {
     //                    .deviceOwnerAuthenticationWithBiometrics,
                         localizedReason: authConfig.title
                     ) { success, error in
-                        
-                        if success {
-                            successHandler(true)
-                        } else {
-                            if let error = error {
-                                errorHandler(VCLError(error: error))
+                        // Releasing a context cancels its evaluation, so the
+                        // reply holds the context until the evaluation ends.
+                        withExtendedLifetime(localAuthenticationContext) {
+                            if success {
+                                successHandler(true)
                             } else {
-                                successHandler(false)
+                                if let error = error {
+                                    errorHandler(VCLError(error: error))
+                                } else {
+                                    successHandler(false)
+                                }
                             }
                         }
                     }

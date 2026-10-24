@@ -35,6 +35,40 @@ class VCLAuthTests: XCTestCase {
         XCTAssertEqual(contexts.map(\.evaluationCount), [1, 1])
     }
 
+    func testAuthenticationKeepsTheContextUntilTheReply() {
+        let pendingReply = PendingReply()
+        weak var weakContext: LAContext?
+        let auth = VCLAuthImpl(
+            makeLocalAuthenticationContext: {
+                let context = DeferredReplyLAContext(pendingReply: pendingReply)
+                weakContext = context
+                return context
+            },
+            executor: ExecutorImpl()
+        )
+        let replied = expectation(description: "reply")
+        var results: [Bool] = []
+        var errors: [VCLError] = []
+
+        auth.authenticate(
+            authConfig: authConfig,
+            successHandler: { results.append($0); replied.fulfill() },
+            errorHandler: { errors.append($0); replied.fulfill() }
+        )
+        // Let the main-thread block run and return, as the OS prompt would.
+        RunLoop.main.run(until: Date().addingTimeInterval(0.1))
+
+        XCTAssertNotNil(weakContext)
+        XCTAssertTrue(errors.isEmpty)
+
+        pendingReply.complete(success: true)
+        wait(for: [replied], timeout: 1)
+
+        XCTAssertEqual(results, [true])
+        XCTAssertTrue(errors.isEmpty)
+        XCTAssertNil(weakContext)
+    }
+
     func testAuthenticationCompletesAfterTheAuthIsReleased() {
         let executor = DeferredExecutor()
         var auth: VCLAuth? = VCLAuthImpl(
@@ -85,6 +119,47 @@ private class FakeLAContext: LAContext {
     ) {
         evaluationCount += 1
         reply(error == nil, error)
+    }
+}
+
+// Replies only when the test completes the evaluation. Like LocalAuthentication,
+// it cancels a pending evaluation when the context is deallocated.
+private class DeferredReplyLAContext: LAContext {
+    private let pendingReply: PendingReply
+
+    init(pendingReply: PendingReply) {
+        self.pendingReply = pendingReply
+        super.init()
+    }
+
+    deinit {
+        pendingReply.cancel()
+    }
+
+    override func evaluatePolicy(
+        _ policy: LAPolicy,
+        localizedReason: String,
+        reply: @escaping (Bool, Error?) -> Void
+    ) {
+        pendingReply.reply = reply
+    }
+}
+
+private class PendingReply {
+    var reply: ((Bool, Error?) -> Void)?
+
+    func cancel() {
+        finish(success: false, error: LAError(.appCancel))
+    }
+
+    func complete(success: Bool) {
+        finish(success: success, error: nil)
+    }
+
+    private func finish(success: Bool, error: Error?) {
+        let reply = self.reply
+        self.reply = nil
+        reply?(success, error)
     }
 }
 
