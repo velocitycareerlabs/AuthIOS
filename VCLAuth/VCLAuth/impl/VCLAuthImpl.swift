@@ -12,11 +12,14 @@ import LocalAuthentication
 
 class VCLAuthImpl: VCLAuth {
     
-    let localAuthenticationContext: LAContext
+    // Every call gets a new context. A context that has already passed can
+    // pass again without showing the prompt: with Face ID on iOS 27, a shared
+    // one let every authentication after the first succeed silently.
+    let makeLocalAuthenticationContext: () -> LAContext
     let executor: Executor
     
-    init(localAuthenticationContext: LAContext, executor: Executor) {
-        self.localAuthenticationContext = localAuthenticationContext
+    init(makeLocalAuthenticationContext: @escaping () -> LAContext, executor: Executor) {
+        self.makeLocalAuthenticationContext = makeLocalAuthenticationContext
         self.executor = executor
     }
     
@@ -24,10 +27,11 @@ class VCLAuthImpl: VCLAuth {
         successHandler: @escaping (Bool) -> Void,
         errorHandler: @escaping (VCLError) -> Void
     ) {
-        self.executor.runOnMainThread { [weak self] in
+        let localAuthenticationContext = makeLocalAuthenticationContext()
+        self.executor.runOnMainThread {
             do {
                 var error: NSError?
-                try successHandler(self?.localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) == true)
+                try successHandler(localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error))
             } catch let error {
                 errorHandler(VCLError(error: error))
             }
@@ -39,21 +43,25 @@ class VCLAuthImpl: VCLAuth {
         successHandler: @escaping (Bool) -> Void,
         errorHandler: @escaping (VCLError) -> Void) {
             
-            self.executor.runOnMainThread { [weak self] in
+            let localAuthenticationContext = makeLocalAuthenticationContext()
+            self.executor.runOnMainThread {
                 do {
-                    try self?.localAuthenticationContext.evaluatePolicy(
+                    try localAuthenticationContext.evaluatePolicy(
                         .deviceOwnerAuthentication,
     //                    .deviceOwnerAuthenticationWithBiometrics,
                         localizedReason: authConfig.title
                     ) { success, error in
-                        
-                        if success {
-                            successHandler(true)
-                        } else {
-                            if let error = error {
-                                errorHandler(VCLError(error: error))
+                        // Releasing a context cancels its evaluation, so the
+                        // reply holds the context until the evaluation ends.
+                        withExtendedLifetime(localAuthenticationContext) {
+                            if success {
+                                successHandler(true)
                             } else {
-                                successHandler(false)
+                                if let error = error {
+                                    errorHandler(VCLError(error: error))
+                                } else {
+                                    successHandler(false)
+                                }
                             }
                         }
                     }
