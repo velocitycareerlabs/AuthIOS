@@ -12,6 +12,6 @@ import LocalAuthentication
 
 public class VclAuthProvider {
     public static func instance() -> VCLAuth {
-        return VCLAuthImpl(localAuthenticationContext: LAContext(), executor: ExecutorImpl())
+        return VCLAuthImpl(makeLocalAuthenticationContext: { LAContext() }, executor: ExecutorImpl())
     }
 }
