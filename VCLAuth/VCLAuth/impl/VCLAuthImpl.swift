@@ -13,8 +13,8 @@ import LocalAuthentication
 class VCLAuthImpl: VCLAuth {
     
     // Every call gets a new context. A context that has already passed can
-    // pass again without showing the prompt, so a shared one would let every
-    // authentication after the first succeed silently.
+    // pass again without showing the prompt: with Face ID on iOS 27, a shared
+    // one let every authentication after the first succeed silently.
     let makeLocalAuthenticationContext: () -> LAContext
     let executor: Executor
     

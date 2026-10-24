@@ -97,19 +97,37 @@ class VCLAuthTests: XCTestCase {
 
         XCTAssertNotNil(reportedError)
     }
+
+    func testAvailabilityReportsWhetherTheContextCanEvaluate() {
+        for canEvaluate in [true, false] {
+            let auth = VCLAuthImpl(
+                makeLocalAuthenticationContext: {
+                    FakeLAContext(canEvaluate: canEvaluate)
+                },
+                executor: ImmediateExecutor()
+            )
+            var isAvailable: Bool?
+
+            auth.isAuthenticationAvailable(successHandler: { isAvailable = $0 }, errorHandler: { _ in })
+
+            XCTAssertEqual(isAvailable, canEvaluate)
+        }
+    }
 }
 
 private class FakeLAContext: LAContext {
+    private let canEvaluate: Bool
     private let error: Error?
     private(set) var evaluationCount = 0
 
-    init(error: Error? = nil) {
+    init(canEvaluate: Bool = true, error: Error? = nil) {
+        self.canEvaluate = canEvaluate
         self.error = error
         super.init()
     }
 
     override func canEvaluatePolicy(_ policy: LAPolicy, error: NSErrorPointer) -> Bool {
-        true
+        canEvaluate
     }
 
     override func evaluatePolicy(
